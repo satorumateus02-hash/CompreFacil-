@@ -1,0 +1,39 @@
+@{
+    ViewData["Title"] = "Criar Cadastro";
+}
+
+<h2>Criar Cadastro</h2>
+
+@if(TempData["RegErrors"] != null) {
+    <div class="alert alert-danger">@TempData["RegErrors"]</div>
+}
+
+<form asp-action="Register" asp-controller="Home" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label class="form-label">Usuário</label>
+        <input name="Usuario" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Senha</label>
+        <input name="Senha" type="password" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Confirmar Senha</label>
+        <input name="ConfirmarSenha" type="password" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Email para recuperação</label>
+        <input name="Email" type="email" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Cadastrar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

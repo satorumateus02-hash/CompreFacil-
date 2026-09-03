@@ -1,0 +1,65 @@
+@model HelpDeskMvc.Models.CriarChamadoViewModel
+
+@{
+    ViewData["Title"] = "Solicitar Atendimento Domiciliar";
+}
+
+<div class="container mt-4"> <h1>Solicitar Atendimento Domiciliar</h1> <hr />
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Criar" method="post">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Descricao" class="form-label">Descrição</label>
+                <textarea asp-for="Descricao" class="form-control" rows="5"
+                          placeholder="Descreva o problema"></textarea>
+                <span asp-validation-for="Descricao" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="ClienteNome" class="form-label">Nome do Cliente</label>
+                <input asp-for="ClienteNome" class="form-control" />
+                <span asp-validation-for="ClienteNome" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Telefone" class="form-label">Telefone</label>
+                <input asp-for="Telefone" class="form-control" />
+                <span asp-validation-for="Telefone" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Endereco" class="form-label">Endereço</label>
+                <input asp-for="Endereco" class="form-control" />
+                <span asp-validation-for="Endereco" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Complemento" class="form-label">Complemento</label>
+                <input asp-for="Complemento" class="form-control" />
+                <span asp-validation-for="Complemento" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Solicitar Atendimento
+            </button>
+
+            <a asp-controller="Chamados"
+               asp-action="Index"
+               class="btn btn-secondary">
+                Voltar
+            </a>
+
+        </form>
+    </div>
+</div>
+
+</div>
+
+@section Scripts {
+@{
+await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
